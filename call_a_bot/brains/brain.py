@@ -1,16 +1,13 @@
-import time
 from loguru import logger
 
 class Brain:
     ALIAS = 'UnkownBrain'
+    NO_ANSWER = 'I don\'t know'
         
     @classmethod
-    def whoami(self):
-        return "I am {self.ALIAS}"
+    def alias(cls):
+        return cls.ALIAS
     
     @classmethod
-    def answer(self, question: str):
-        # message = f"{self.ALIAS} is thinking about {question}..."
-        # logger.info(message)
-        
-        return "I don't have an answer"
+    def answer(cls, question: str):
+        return cls.NO_ANSWER

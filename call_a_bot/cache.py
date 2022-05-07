@@ -26,9 +26,9 @@ class Cache:
         with open(self.filepath) as file_object:
             cache = json.load(file_object)
             try:
-                value = self.decrypt(cache[hash])
+                value = self.decode(cache[hash])
             except:
-                logger.info(f"Could not find '{hash}' in cache")
+                return None
 
         if key in self.AUDIT_FIELDS:
             if value is not None:
@@ -40,11 +40,8 @@ class Cache:
         created = False
 
         if not path.isfile(self.filepath):
-            with open(self.filepath, 'w') as file_object:
-                json.dump({
-                    'created_at': self.encrypt(datetime.now().timestamp())
-                }, file_object)
-                created = True
+            created = True
+            self.clear()
 
         with open(self.filepath) as file_object:
             cache = json.load(file_object)
@@ -52,20 +49,26 @@ class Cache:
 
         hash = self.hash(key)
         with open(self.filepath, "w") as file_object:
-            cache[hash] = self.encrypt(value)
+            cache[hash] = self.encode(value)
 
             timestamp = datetime.now().timestamp()
             if created:
-                cache['created_at'] = self.encrypt(timestamp)
+                cache['created_at'] = self.encode(timestamp)
             else:
-                cache['updated_at'] = self.encrypt(timestamp)
+                cache['updated_at'] = self.encode(timestamp)
 
             json.dump(cache, file_object)
 
         return value
+    
+    def clear(self):
+        with open(self.filepath, 'w') as file_object:
+            json.dump({
+                'created_at': self.encode(datetime.now().timestamp())
+            }, file_object)
 
-    def decrypt(self, value):
+    def decode(self, value):
         return json.loads(value)
 
-    def encrypt(self, value):
+    def encode(self, value):
         return json.dumps(value)

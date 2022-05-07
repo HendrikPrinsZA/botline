@@ -10,7 +10,7 @@ class TestDavinci(unittest.TestCase):
     def test_ask(self):
         bot = Davinci()
         answer = bot.ask('What is your favourite colour?')
-        self.assertEqual(answer, "I don't have an answer")
+        self.assertEqual(answer, 'I don\'t know')
         
 if __name__ == '__main__':
     unittest.main()

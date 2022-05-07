@@ -21,8 +21,4 @@ class Bot:
 
     @classmethod
     def ask(cls, question: str):
-        if cls.brain: 
-            return cls.brain().answer(question)
-
-        # return "I can't think without a brain"
-        raise Exception("I can't think without a brain!")
+        return cls.brain().answer(question)

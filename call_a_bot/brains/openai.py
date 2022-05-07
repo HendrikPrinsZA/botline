@@ -9,7 +9,7 @@ class OpenAi(Brain):
         # message = f"{self.ALIAS} is thinking internally about {question}..."
         # logger.info(message)
         
-        return "I don't have an answer"
+        return self.NO_ANSWER
 
     @classmethod
     def alias(cls):

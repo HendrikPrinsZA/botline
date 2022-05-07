@@ -4,4 +4,6 @@
 coverage run -m unittest tests/**/*.py
 
 # check coverage
-coverage report -m call_a_bot/**/*.py
+if [ $? -eq 0 ]; then
+  coverage report -m call_a_bot/**/*.py
+fi

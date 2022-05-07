@@ -12,8 +12,8 @@ def BrainFactory(brain: str = 'openai'):
     try:
         brain_class = brains[brain]
     except:
-        logging.error(f"Could not find brain for '{brain}'")
-        exit(1)
+        logging.warning(f"Could not find brain for '{brain}'")
+        return None
         
     return brain_class()
 
@@ -26,8 +26,8 @@ def BotFactory(bot: str = 'Davinci', brain: str = 'openai'):
     try:
         bot_class = bots[bot]
     except:
-        logging.error(f"Could not find bot for '{bot}'")
-        exit(1)
+        logging.warning(f"Could not find bot for '{bot}'")
+        return None
         
     brian = BrainFactory(brain)
     return bot_class(brian)
