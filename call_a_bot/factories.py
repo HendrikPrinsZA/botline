@@ -4,11 +4,10 @@ from call_a_bot.bots.davinci import Davinci
 from call_a_bot.brains.openai import OpenAi
 
 def BrainFactory(brain: str = 'openai'):
+    brain = brain.lower()
     brains = {
         'openai': OpenAi
     }
-
-    brain = brain.lower()
     
     try:
         brain_class = brains[brain]
@@ -19,13 +18,10 @@ def BrainFactory(brain: str = 'openai'):
     return brain_class()
 
 def BotFactory(bot: str = 'Davinci', brain: str = 'openai'):
-    brian = BrainFactory(brain)
-    
+    bot = bot.lower()
     bots = {
         'davinci': Davinci
     }
-
-    bot = bot.lower()
     
     try:
         bot_class = bots[bot]
@@ -33,4 +29,5 @@ def BotFactory(bot: str = 'Davinci', brain: str = 'openai'):
         logging.error(f"Could not find bot for '{bot}'")
         exit(1)
         
+    brian = BrainFactory(brain)
     return bot_class(brian)
