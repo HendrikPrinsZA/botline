@@ -29,7 +29,7 @@ class Cache:
       try:
         value = self.decrypt(cache[hash])
       except:
-        print(f"Could not find '{hash}' in cache")
+        logger.info(f"Could not find '{hash}' in cache")
 
     if key in self.AUDIT_FIELDS:
       if value is not None:

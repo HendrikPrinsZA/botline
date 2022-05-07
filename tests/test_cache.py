@@ -1,11 +1,12 @@
-from datetime import datetime
-from os import path
 import os
 import unittest
+from datetime import datetime
+from os import path
 
 from call_a_bot.cache import Cache
 
 class TestCacheMethods(unittest.TestCase):
+  MAX_MS = 1500
   PATH_DIR = path.abspath(f"{path.dirname(__file__)}/../tests/__pycache__")
   PATH_CACHE = f"{PATH_DIR}/test_cache.json"
 
@@ -25,7 +26,11 @@ class TestCacheMethods(unittest.TestCase):
     created_at = self.cache.get('created_at')
     
     difference = started_at - created_at
-    self.assertLess(difference.microseconds, 300, 'Should not be this slow...')
+    self.assertLess(
+      difference.microseconds, 
+      self.MAX_MS, 
+      f"Took longer than {self.MAX_MS} to save, check the algorithm!"
+    )
     self.assertIsInstance(created_at, datetime)  
 
 if __name__ == '__main__':
