@@ -1,29 +1,28 @@
+from call_a_bot.brains.brain import Brain
 from loguru import logger
 
-from call_a_bot.brains.brain import Brain
-
 class Bot:
-  ALIAS = 'UnkownBot'
+    ALIAS = 'UnkownBot'
 
-  def __init__(self, brain: Brain):
-    self.setProperties(brain)
-    
-  @classmethod
-  def setProperties(self, brain: Brain):
-    # To-do: Figure out how best to deal with property inheritance
-    # - @property does not seems to assign inherited properties?
-    self.brain = brain
+    def __init__(self, brain: Brain):
+        self.set_properties(brain)
 
-  @classmethod
-  def alias(self):
-    return self.ALIAS
+    @classmethod
+    def set_properties(cls, brain: Brain):
+        """
+        To-do: Figure out how best to deal with property inheritance
+        - @property does not seems to assign inherited properties?
+        """
+        cls.brain = brain
 
-  @classmethod
-  def ask(self, question: str):
-    if self.brain: 
-      return self.brain().answer(question)
-    
-    # return "I can't think without a brain"
-    raise Exception("I can't think without a brain!")
-      
-    
+    @classmethod
+    def alias(cls):
+        return cls.ALIAS
+
+    @classmethod
+    def ask(cls, question: str):
+        if cls.brain: 
+            return cls.brain().answer(question)
+
+        # return "I can't think without a brain"
+        raise Exception("I can't think without a brain!")
