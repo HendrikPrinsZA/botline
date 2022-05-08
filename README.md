@@ -16,6 +16,3 @@ python3 -m pip install -r requirements.txt
 python3 botline call
 ```
 
-Description here...
-# Installation
-
