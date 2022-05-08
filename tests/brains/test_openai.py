@@ -8,10 +8,11 @@ class TestOpenAi(unittest.TestCase):
         self.assertEqual('OpenAI', brain.alias())
         self.assertEqual(OpenAi.ALIAS, brain.alias())
         
-    def test_answer(self):
-        brain = OpenAi()
-        answer = brain.answer('What is your favourite colour?')
-        self.assertEqual(answer, 'I don\'t know')
+    # To-do: Mock the API
+    # def test_answer(self):
+    #     brain = OpenAi()
+    #     answer = brain.answer('What is your favourite colour?')
+    #     self.assertEqual(answer, brain.NO_ANSWER)
         
 if __name__ == '__main__':
     unittest.main()

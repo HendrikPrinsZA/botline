@@ -2,6 +2,7 @@ from datetime import datetime
 import hashlib
 import json
 from os import path
+from typing import Any
 from loguru import logger
 
 class Cache:
@@ -9,17 +10,17 @@ class Cache:
         'created_at', 'updated_at', 'viewed_at'
     ]
 
-    def __init__(self, filepath):
+    def __init__(self, filepath: str) -> None:
         self.filepath = filepath
         self.set('viewed_at', datetime.now().timestamp())
 
-    def hash(self, key):
+    def hash(self, key: str) -> str:
         if key in self.AUDIT_FIELDS:
             return key
 
         return hashlib.md5(key.encode()).hexdigest()
 
-    def get(self, key):
+    def get(self, key: str) -> Any:
         hash = self.hash(key)
 
         value = None
@@ -36,7 +37,7 @@ class Cache:
 
         return value
 
-    def set(self, key, value):
+    def set(self, key: str, value: Any) -> str:
         created = False
 
         if not path.isfile(self.filepath):
@@ -61,14 +62,14 @@ class Cache:
 
         return value
     
-    def clear(self):
+    def clear(self) -> None:
         with open(self.filepath, 'w') as file_object:
             json.dump({
                 'created_at': self.encode(datetime.now().timestamp())
             }, file_object)
 
-    def decode(self, value):
+    def decode(self, value: str) -> Any:
         return json.loads(value)
 
-    def encode(self, value):
+    def encode(self, value: Any) -> str:
         return json.dumps(value)

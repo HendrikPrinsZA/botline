@@ -6,7 +6,7 @@ from os import path
 
 from call_a_bot.cache import Cache
 class TestCacheMethods(unittest.TestCase):
-    MAX_MS = 3000
+    MAX_MS = 5000
     PATH_DIR = path.abspath(f"{path.dirname(__file__)}/../tests/__pycache__")
     PATH_CACHE = f"{PATH_DIR}/test_cache.json"
 

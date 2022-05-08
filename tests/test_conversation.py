@@ -26,11 +26,11 @@ Bot: """,
             convo.get_prompt()
         )
         
-    def test_set_last_message_text(self):
+    def test_set_answer(self):
         convo = Conversation()
         convo.append('Human', 'What is 2 + 2?')
         convo.append('Bot')
-        convo.set_last_message_text('4')
+        convo.set_answer('4')
         self.assertMultiLineEqual(
             """Human: What is 2 + 2?
 Bot: 4""",
@@ -43,22 +43,17 @@ Bot: 4""",
         convo.append('Bot', '4')
         convo.undo()
         self.assertMultiLineEqual(
-            'Human: What is 2 + 2?',
+            """Human: What is 2 + 2?
+Bot: """,
             convo.get_prompt()
         )
-    
-    def test_redo(self):
-        convo = Conversation()
-        convo.append('Human', 'What is 2 + 2?')
-        convo.append('Bot', '4')
         convo.undo()
-        convo.redo()
+        self.assertEqual('Human: ', convo.get_prompt())
         convo.undo()
-        convo.redo()
-        self.assertMultiLineEqual(
-            """Human: What is 2 + 2?
-Bot: 4""",
-            convo.get_prompt()
+        self.assertEqual(
+            'Human: ', 
+            convo.get_prompt(), 
+            'Should not be able to undo any further!'
         )
 
 if __name__ == '__main__':

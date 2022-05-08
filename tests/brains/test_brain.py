@@ -10,7 +10,7 @@ class TestOpenAi(unittest.TestCase):
     def test_answer(self):
         brain = Brain()
         answer = brain.answer('What is your favourite colour?')
-        self.assertEqual(answer, 'I don\'t know')
+        self.assertEqual(answer, brain.NO_ANSWER)
         
 if __name__ == '__main__':
     unittest.main()

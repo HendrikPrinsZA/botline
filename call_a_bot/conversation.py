@@ -4,12 +4,12 @@ from datetime import datetime
 from call_a_bot.bots.bot import Bot
 
 class Message:
-    def __init__(self, alias, text = None):
+    def __init__(self, alias: str, text: str = None) -> None:
         self.alias = alias
         self.datetime = datetime.now()
         self._text = text
     
-    def __str__(self):
+    def __str__(self) -> str:
         line = line = f"{self.alias}: "
         
         if self.text is not None:
@@ -18,42 +18,42 @@ class Message:
         return line
     
     @property
-    def text(self):
+    def text(self) -> str:
         return self._text
     
     @text.setter
-    def text(self, text: str):
-        text = text.strip()
+    def text(self, text: str) -> None:
+        if text is not None:
+            text = text.strip()
         self._text = text
 
 class Conversation:
     
-    def __init__(self, bio: str = ''):
+    def __init__(self, bio: str = '') -> None:
         self.history = []
         self.messages = []
         self.bio = bio
         
-    def append(self, alias, text = None):
+    def append(self, alias: str, text: str = None) -> None:
         message = Message(alias, text)
         self.messages.append(message)
         self._save_history()
 
-    def set_last_message_text(self, text: str):
-        last_message = self.messages[-1]
-        last_message.text = text
+    def set_answer(self, text: str) -> None:
+        self.messages[-1].text = text
         self._save_history()
         
-    def undo(self, count: int = 1):
-        pos = (count + 1) * -1
+    def undo(self, count: int = 1) -> None:
+        pos = count + 1 * -1
         
-        if len(self.history) > count:
+        last_message = self.messages[-1]
+        if last_message.text is not None:
+            last_message.text = None
+        elif len(self.history) > count:
             self.messages = self.history[pos].copy()
-            self._save_history()
-            
-    def redo(self, count: int = 1):
-        self.undo(count)
+            self.messages[-1].text = None
         
-    def get_prompt(self):
+    def get_prompt(self) -> str:
         lines = []
         
         if len(self.bio) > 0:
@@ -65,6 +65,6 @@ class Conversation:
             
         return "\n".join(lines)
     
-    def _save_history(self):
+    def _save_history(self) -> None:
         self.history.append(self.messages.copy())
         

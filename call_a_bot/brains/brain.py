@@ -2,12 +2,16 @@ from loguru import logger
 
 class Brain:
     ALIAS = 'UnkownBrain'
-    NO_ANSWER = 'I don\'t know'
+    NO_ANSWER = 'has no answer'
         
     @classmethod
-    def alias(cls):
+    def alias(cls) -> str:
         return cls.ALIAS
     
     @classmethod
-    def answer(cls, question: str):
+    def answer(cls, question: str) -> str:
+        return cls.no_answer()
+    
+    @classmethod
+    def no_answer(cls) -> str:
         return cls.NO_ANSWER

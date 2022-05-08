@@ -5,6 +5,6 @@ from call_a_bot.brains.openai import OpenAi
 class Davinci(Bot):
     ALIAS = 'Davinci'
 
-    def __init__(self, brain: Brain = OpenAi):
+    def __init__(self, brain: Brain = OpenAi()) -> None:
         super().__init__(brain)
 

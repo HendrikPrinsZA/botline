@@ -11,25 +11,17 @@ class Bot:
     with something related but funny.
     """
     
-    PROMPT_START = '\nA:'
-    
-    PROMPT_END = '\nQ:'
-
-    def __init__(self, brain: Brain):
+    def __init__(self, brain: Brain) -> None:
         self.set_properties(brain)
 
     @classmethod
-    def set_properties(cls, brain: Brain):
-        """
-        To-do: Figure out how best to deal with property inheritance
-        - @property does not seems to assign inherited properties?
-        """
+    def set_properties(cls, brain: Brain) -> None:
         cls.brain = brain
 
     @classmethod
-    def alias(cls):
+    def alias(cls) -> str:
         return cls.ALIAS
 
     @classmethod
-    def ask(cls, question: str):
-        return cls.brain().answer(question)
+    def ask(cls, question: str) -> str:
+        return cls.brain.answer(question)
