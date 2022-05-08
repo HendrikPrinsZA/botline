@@ -1,6 +1,6 @@
 import unittest
 
-from call_a_bot.brains.openai import OpenAi
+from botline.brains.openai import OpenAi
 
 class TestOpenAi(unittest.TestCase):
     def test_create(self):

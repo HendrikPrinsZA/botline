@@ -1,8 +1,8 @@
 from loguru import logger
-from call_a_bot.conversation import Conversation
-from call_a_bot.factories import BotFactory
+from botline.conversation import Conversation
+from botline.factories import BotFactory
 
-class CallABot(object):
+class BotLine(object):
     ALIAS = 'Human'
 
     def __init__(self, openai_api_key: str = None) -> None:

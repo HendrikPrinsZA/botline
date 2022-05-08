@@ -1,6 +1,6 @@
-from call_a_bot.bots.bot import Bot
-from call_a_bot.brains.brain import Brain
-from call_a_bot.brains.terminal import Terminal
+from botline.bots.bot import Bot
+from botline.brains.brain import Brain
+from botline.brains.terminal import Terminal
 
 class Human(Bot):
     ALIAS = 'Human'

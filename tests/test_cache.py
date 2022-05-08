@@ -4,7 +4,7 @@ import unittest
 from datetime import datetime
 from os import path
 
-from call_a_bot.cache import Cache
+from botline.cache import Cache
 class TestCacheMethods(unittest.TestCase):
     MAX_MS = 5000
     PATH_DIR = path.abspath(f"{path.dirname(__file__)}/../tests/__pycache__")

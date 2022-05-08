@@ -1,7 +1,7 @@
 
 from datetime import datetime
 
-from call_a_bot.bots.bot import Bot
+from botline.bots.bot import Bot
 
 class Message:
     def __init__(self, alias: str, text: str = None) -> None:

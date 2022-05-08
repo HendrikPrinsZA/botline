@@ -11,15 +11,15 @@ def parse_requirements(filename):
   return [line for line in lines if line and not line.startswith("#")]
 
 setup(
-  name = 'call-a-bot',
-  version = '0.1.0',
+  name = 'botline',
+  version = '0.0.1',
   description = 'Call a bot and have a conversation',
   long_description = readme,
   author = 'Hendrik Prinsloo',
   author_email = 'info@hendrikprinsloo.co.za',
-  url = 'https://github.com/HendrikPrinsZA/call-a-bot',
+  url = 'https://github.com/HendrikPrinsZA/botline',
   license = license,
-  packages = ['call_a_bot'],
+  packages = ['botline'],
   install_requires = parse_requirements('requirements.txt'),
 )
 

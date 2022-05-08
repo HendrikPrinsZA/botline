@@ -1,8 +1,8 @@
-from call_a_bot.bots.bot import Bot
-from call_a_bot.bots.davinci import Davinci
-from call_a_bot.bots.human import Human
-from call_a_bot.brains.openai import OpenAi
-from call_a_bot.brains.terminal import Terminal
+from botline.bots.bot import Bot
+from botline.bots.davinci import Davinci
+from botline.bots.human import Human
+from botline.brains.openai import OpenAi
+from botline.brains.terminal import Terminal
 
 def BrainFactory(brain: str = 'openai'):
     brain = brain.lower()

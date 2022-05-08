@@ -1,7 +1,7 @@
 import unittest
-from call_a_bot.bots.davinci import Davinci
-from call_a_bot.brains.openai import OpenAi
-from call_a_bot.factories import BotFactory, BrainFactory
+from botline.bots.davinci import Davinci
+from botline.brains.openai import OpenAi
+from botline.factories import BotFactory, BrainFactory
 
 class TestFactories(unittest.TestCase):
     def test_create_default(self):

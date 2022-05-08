@@ -1,6 +1,6 @@
 import unittest
 
-from call_a_bot.bots.davinci import Davinci
+from botline.bots.davinci import Davinci
 
 class TestDavinci(unittest.TestCase):
     def test_create(self):

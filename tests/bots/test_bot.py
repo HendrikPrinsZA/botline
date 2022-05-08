@@ -1,7 +1,7 @@
 import unittest
-from call_a_bot.bots.bot import Bot
-from call_a_bot.brains.brain import Brain
-from call_a_bot.brains.openai import OpenAi
+from botline.bots.bot import Bot
+from botline.brains.brain import Brain
+from botline.brains.openai import OpenAi
 
 class TestBot(unittest.TestCase):
     def test_create_generic(self):

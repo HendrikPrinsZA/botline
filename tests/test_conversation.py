@@ -1,6 +1,6 @@
 import unittest
 
-from call_a_bot.conversation import Conversation
+from botline.conversation import Conversation
 
 class TestConversation(unittest.TestCase):
     MAX_MS = 3000

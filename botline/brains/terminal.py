@@ -1,5 +1,5 @@
 from loguru import logger
-from call_a_bot.brains.brain import Brain
+from botline.brains.brain import Brain
 
 class Terminal(Brain):
     ALIAS = 'Terminal'

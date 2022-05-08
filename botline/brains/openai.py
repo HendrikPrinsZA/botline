@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from loguru import logger
 import openai
-from call_a_bot.brains.brain import Brain
+from botline.brains.brain import Brain
 
 class OpenAi(Brain):
     ALIAS = 'OpenAI'
