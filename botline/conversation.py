@@ -3,7 +3,7 @@ from datetime import datetime
 
 from botline.bots.bot import Bot
 
-class Message:
+class Message(object):
     def __init__(self, alias: str, text: str = None) -> None:
         self.alias = alias
         self.datetime = datetime.now()

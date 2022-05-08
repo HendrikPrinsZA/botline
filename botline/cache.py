@@ -5,7 +5,7 @@ from os import path
 from typing import Any
 from loguru import logger
 
-class Cache:
+class Cache(object):
     AUDIT_FIELDS = [
         'created_at', 'updated_at', 'viewed_at'
     ]

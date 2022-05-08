@@ -1,7 +1,7 @@
 from botline.brains.brain import Brain
 from loguru import logger
 
-class Bot:
+class Bot(object):
     ALIAS = 'UnkownBot'
     
     BIO = """

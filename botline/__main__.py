@@ -24,7 +24,7 @@ cli_string = """usage: python -m botline"
 Python BotLine is a library for communicating with AI bots
 """
 
-class Main:
+class Main(object):
     """Python BotLine CLI"""
     
     def __init__(self) -> None:

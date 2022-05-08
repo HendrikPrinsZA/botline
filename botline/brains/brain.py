@@ -1,6 +1,6 @@
 from loguru import logger
 
-class Brain:
+class Brain(object):
     ALIAS = 'UnkownBrain'
     NO_ANSWER = 'has no answer'
         
