@@ -6,18 +6,9 @@ This allows using BotLine with third-party libraries without modifying their cod
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-from dotenv import load_dotenv
-from loguru import logger
-import os
 import fire
+
 from botline.core import BotLine
-
-from botline.factories import BotFactory
-
-PATH_ENV = os.path.abspath(f"{os.path.dirname(__file__)}/../.env")
-load_dotenv(PATH_ENV)
-
-import botline
 
 cli_string = """usage: python -m botline"
 
