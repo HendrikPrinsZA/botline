@@ -1,7 +1,8 @@
 from setuptools import setup, find_packages
+import setuptools
 
-with open('README.rst') as f:
-  readme = f.read()
+with open('README.md') as f:
+  long_description = f.read()
 
 with open('LICENSE') as f:
   license = f.read()
@@ -14,12 +15,13 @@ setup(
   name = 'botline',
   version = '0.0.1',
   description = 'Call a bot and have a conversation',
-  long_description = readme,
+  long_description = long_description,
+  long_description_content_type = "text/markdown",
   author = 'Hendrik Prinsloo',
   author_email = 'info@hendrikprinsloo.co.za',
   url = 'https://github.com/HendrikPrinsZA/botline',
   license = license,
-  packages = ['botline'],
+  packages= setuptools.find_packages(),
   install_requires = parse_requirements('requirements.txt'),
 )
 
