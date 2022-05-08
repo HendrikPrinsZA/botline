@@ -29,23 +29,36 @@ class Message:
 
 class Conversation:
     
-    def __init__(self, bio: str = '') -> None:
+    def __init__(self, human: Bot, bot: Bot) -> None:
+        self.human = human
+        self.bot = bot
         self.history = []
         self.messages = []
-        self.bio = bio
+        self.bot_bio_messages()
+
+    def bot_bio_messages(self) -> None:
+        if self.bot.BIO_MESSAGES is None:
+            return
+
+        for message in self.bot.BIO_MESSAGES:
+            self.append(self.human.ALIAS, message['question'])
+            self.append(self.bot.ALIAS, message['answer'])
         
     def append(self, alias: str, text: str = None) -> None:
-        message = Message(alias, text)
+        message = Message(alias)
         self.messages.append(message)
-        self._save_history()
+        if text is not None:
+            self.set_answer(text)
 
     def set_answer(self, text: str) -> None:
         self.messages[-1].text = text
         self._save_history()
         
     def undo(self, count: int = 1) -> None:
-        pos = count + 1 * -1
-        
+        if count > len(self.history):
+            count = len(self.history) - 1
+
+        pos = (count + 1) * -1
         last_message = self.messages[-1]
         if last_message.text is not None:
             last_message.text = None
@@ -56,8 +69,13 @@ class Conversation:
     def get_prompt(self) -> str:
         lines = []
         
-        if len(self.bio) > 0:
-            lines.append(self.bio.strip())
+        if len(self.bot.BIO) > 0:
+            bio = ""
+            for line in self.bot.BIO.splitlines():
+                line = line.strip()
+                bio = f"{bio} {line}"
+
+            lines.append(bio.strip())
             lines.append('')
         
         for message in self.messages:

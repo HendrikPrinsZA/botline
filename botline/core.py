@@ -3,14 +3,11 @@ from botline.conversation import Conversation
 from botline.factories import BotFactory
 
 class BotLine(object):
-    ALIAS = 'Human'
-
-    def __init__(self, openai_api_key: str = None) -> None:
+    def __init__(self) -> None:
         self.human = BotFactory('Human')
         self.bot = BotFactory('Davinci')
-        self.bot.brain.openai_api_key = openai_api_key
 
-        self.convo = Conversation(self.bot.BIO)
+        self.convo = Conversation(self.human, self.bot)
 
     def call(self) -> None:
         self.convo.append(self.human.ALIAS)
