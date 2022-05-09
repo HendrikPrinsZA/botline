@@ -1,5 +1,5 @@
 # BotLine - the hotline for bots
-[![Tests Status](https://github.com/HendrikPrinsZA/botline/blob/main/tests-badge.svg?dummy=8484744)](./reports/junit/report.html) [![Coverage Status](https://github.com/HendrikPrinsZA/botline/blob/main/coverage-badge.svg)](./reports/coverage/index.html)
+[![Tests Status](https://github.com/HendrikPrinsZA/botline/blob/main/tests-badge.svg?dummy=8484744)](./reports/junit/report.html) [![Coverage Status](https://github.com/HendrikPrinsZA/botline/blob/main/coverage-badge.svg)](./reports/junit/report.html)
 
 Call an AI bot and have a conversation with different personas
 
