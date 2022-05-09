@@ -1,5 +1,5 @@
 # BotLine - the hotline for bots
-[![Tests Status](./reports/junit/junit-badge.svg?dummy=8484744)](./reports/junit/report.html) [![Coverage Status](./reports/coverage/coverage-badge.svg?dummy=8484744)](./reports/coverage/index.html)
+[![Tests Status](./reports/junit/junit-badge.svg?dummy=8484744)](./reports/junit/report.html) [![Coverage Status](https://github.com/HendrikPrinsZA/botline/blob/main/tests-badge.svg?dummy=8484744)](./reports/coverage/index.html)
 Call an AI bot and have a conversation with different personas
 
 ## Getting started (CLI)
