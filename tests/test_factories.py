@@ -1,4 +1,5 @@
 import unittest
+
 from botline.bots.davinci import Davinci
 from botline.brains.openai import OpenAi
 from botline.factories import BotFactory, BrainFactory

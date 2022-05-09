@@ -1,4 +1,5 @@
 import unittest
+
 from botline.brains.brain import Brain
 
 class TestOpenAi(unittest.TestCase):

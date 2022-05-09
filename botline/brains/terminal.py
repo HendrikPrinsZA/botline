@@ -1,17 +1,20 @@
-from loguru import logger
 from botline.brains.brain import Brain
 
 class Terminal(Brain):
     ALIAS = 'Terminal'
     NO_ANSWER = 'is not available'
     
-    def answer(self, question: str) -> str:
+    DELAY_WORD = 0.5
+    DELAY_CHAR = 0.1
+
+    def answer(self, text: str) -> str:
+        prompt = self.print_like_bot(text)
         try:
-            answer = input(question)
+            answer = input(prompt)
         except:
             exit()
         
         if len(answer) == 0:
-            return self.answer(question)
+            return self.answer(text)
 
         return answer

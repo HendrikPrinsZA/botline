@@ -3,7 +3,6 @@ import hashlib
 import json
 from os import path
 from typing import Any
-from loguru import logger
 
 class Cache(object):
     AUDIT_FIELDS = [
@@ -20,24 +19,38 @@ class Cache(object):
 
         return hashlib.md5(key.encode()).hexdigest()
 
+    def file_to_json(self, filepath: str) -> dict:
+        try:
+            with open(filepath) as file_object:
+                cache = json.load(file_object)
+                return dict(cache)
+        except:
+            print(f"Error: Unable to convert file to json at {filepath}")
+            exit(1)
+
+
     def get(self, key: str) -> Any:
         hash = self.hash(key)
 
-        value = None
-        with open(self.filepath) as file_object:
-            cache = json.load(file_object)
-            try:
-                value = self.decode(cache[hash])
-            except:
-                return None
+        if not path.isfile(self.filepath):
+            return None
+
+        cache = self.file_to_json(self.filepath)
+        value = cache.get(hash, None)
+
+        if value is None:
+            return None
 
         if key in self.AUDIT_FIELDS:
-            if value is not None:
-                return datetime.fromtimestamp(value)
+            return datetime.fromtimestamp(float(value))
 
-        return value
+        try:
+            return self.decode(value)
+        except:
+            print(f"Warning: Unable to decode corrupt value of {value}")
+            return None
 
-    def set(self, key: str, value: Any) -> str:
+    def set(self, key: str, value: Any) -> Any:
         created = False
 
         if not path.isfile(self.filepath):

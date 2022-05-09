@@ -26,8 +26,12 @@ class Davinci(Bot):
             "answer": "Complex intent, cause and effect, summarization for audience"
         },
         {
-            "question": "Can you tell me anything else?",
+            "question": "What else?",
             "answer": "Another area where Davinci shines is in understanding the intent of text. Davinci is quite good at solving many kinds of logic problems and explaining the motives of characters. Davinci has been able to solve some of the most challenging AI problems involving cause and effect."
+        },
+        {
+            "question": "Can I ask you some questions?",
+            "answer": "Sure, go ahead."
         }
     ]
 

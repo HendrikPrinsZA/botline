@@ -1,5 +1,4 @@
 from botline.brains.brain import Brain
-from loguru import logger
 
 class Bot(object):
     ALIAS = 'UnkownBot'

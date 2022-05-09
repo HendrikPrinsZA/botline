@@ -5,8 +5,9 @@ from datetime import datetime
 from os import path
 
 from botline.cache import Cache
+
 class TestCacheMethods(unittest.TestCase):
-    MAX_MS = 5000
+    MAX_MS = 1000
     PATH_DIR = path.abspath(f"{path.dirname(__file__)}/../tests/__pycache__")
     PATH_CACHE = f"{PATH_DIR}/test_cache.json"
 
@@ -55,6 +56,38 @@ class TestCacheMethods(unittest.TestCase):
             
         self.cache.set('random_key', 'random_value')
         self.assertEqual('random_value', self.cache.get('random_key'))
+
+    def test_set_str(self):
+        value = 'value'
+        self.cache.set('value', value)
+        cached = self.cache.get('value')
+        self.assertEqual(value, cached)
+
+    def test_set_json(self):
+        value = {
+            'str': 'String',
+            'int': 1,
+            'bool_true': True,
+            'bool_true': False,
+            'list_int': [ 1, 2, 3, 4, 5 ],
+            'list_float': [ 0.1, 0.2, 0.3 ],
+            'weird_strings': [
+                'single quote\'s',
+                "double quote's",
+                "Some new\nline\ns"
+            ],
+            'level_1': {
+                'level_2': {
+                    'level_3': True
+                }
+            },
+            'inception': "{\"str\": \"String\", \"int\": 1, \"bool_true\": false, \"list_int\": [1, 2, 3, 4, 5], \"list_float\": [0.1, 0.2, 0.3], \"weird_strings\": [\"apostrophe's\", \"apostrophe's\"], \"level_1\": {\"level_2\": {\"level_3\": true}}}"
+        }
+
+        self.cache.set('value', value)
+        cached = self.cache.get('value')
+        self.assertEqual(value, cached)
+        
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,4 +1,4 @@
-from loguru import logger
+import os
 from botline.conversation import Conversation
 from botline.factories import BotFactory
 
@@ -11,7 +11,7 @@ class BotLine(object):
 
     def call(self) -> None:
         self.convo.append(self.human.ALIAS)
-        answer = self.human.ask(self.convo.get_prompt())
+        answer = self.human.ask(self.convo.get_text())
 
         if answer.startswith('.'):
             self.command(answer)
@@ -20,7 +20,7 @@ class BotLine(object):
             self.convo.set_answer(answer)
         
         self.convo.append(self.bot.ALIAS)
-        answer = self.bot.ask(self.convo.get_prompt())
+        answer = self.bot.ask(self.convo.get_text())
         self.convo.set_answer(answer)
 
         self.call()
@@ -34,5 +34,5 @@ class BotLine(object):
             self.call()
             return
         
-        logger.error(f"Command '{answer}' not found")
+        print("Error: Command '{answer}' not found")
         self.call()

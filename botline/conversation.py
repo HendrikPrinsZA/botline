@@ -66,7 +66,7 @@ class Conversation:
             self.messages = self.history[pos].copy()
             self.messages[-1].text = None
         
-    def get_prompt(self) -> str:
+    def get_text(self) -> str:
         lines = []
         
         if len(self.bot.BIO) > 0:
