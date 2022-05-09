@@ -1,9 +1,5 @@
-#!/opt/homebrew/bin/zsh
+#!/bin/bash
 
-# run all tests
-coverage run -m unittest tests/**/*.py
-
-# check coverage
-if [ $? -eq 0 ]; then
-  coverage report -m botline/**/*.py
-fi
+pytest --junitxml=reports/junit/junit.xml --html=reports/junit/report.html
+genbadge tests
+genbadge coverage
