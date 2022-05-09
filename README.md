@@ -22,7 +22,7 @@ python3 botline call
 Bots represent the underling context, which could include a bio and some leading questions.
 
 ### Davinci 
-Based on the [GPT-3](https://beta.openai.com/docs/engines/gpt-3) `text-davinci-002` engine
+Based on the [GPT-3](https://beta.openai.com/docs/engines/gpt-3) text-davinci-002 engine
 ### Bio
 ```
 I'm Davinci, the most capable GPT-3 model, also known as text-davinci-002. I can do any task the other models can do, often with less context. In addition to responding to prompts, also supports inserting completions within text.
