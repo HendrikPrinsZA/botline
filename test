@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# clear all
+rm -rf reports/coverage/*
+rm -rf reports/junit/*
+
 pytest --junitxml=reports/junit/junit.xml --html=reports/junit/report.html
 genbadge tests
+
+coverage report
+coverage xml -o reports/coverage/coverage.xml
+coverage html -d reports/coverage  
 genbadge coverage
