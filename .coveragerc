@@ -6,10 +6,10 @@ branch = True
 [report]
 # Regexes for files to exclude from consideration
 omit =
+    botline/core.py
     *__init__.py
     *tests/*
     */site-packages/*
-    botline/core.py
 
 # Regexes for lines to exclude from consideration
 exclude_lines =
