@@ -9,6 +9,7 @@ omit =
     *__init__.py
     *tests/*
     */site-packages/*
+    botline/core.py
 
 # Regexes for lines to exclude from consideration
 exclude_lines =
