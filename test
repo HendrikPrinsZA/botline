@@ -2,12 +2,17 @@
 
 # clear all
 rm -rf reports/coverage/*
-rm -rf reports/junit/*
+rm -rf reports/status/*
 
-pytest --junitxml=reports/junit/junit.xml --html=reports/junit/report.html
-genbadge tests
+# test status
+pytest --junitxml=reports/status/junit.xml --html=reports/status/report.html
+genbadge tests \
+  --input-file=reports/status/junit.xml \
+  -o reports/status/badge.svg
 
-coverage report
+# coverage status
 coverage xml -o reports/coverage/coverage.xml
-coverage html -d reports/coverage  
-genbadge coverage
+coverage html -d reports/coverage
+genbadge coverage \
+  --input-file=reports/coverage/coverage.xml \
+  --output-file=reports/coverage/badge.svg

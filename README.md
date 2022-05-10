@@ -1,5 +1,16 @@
 # BotLine - the hotline for bots
-[![Tests Status](https://github.com/HendrikPrinsZA/botline/blob/main/tests-badge.svg?dummy=8484744)](./reports/junit/report.html) [![Coverage Status](https://github.com/HendrikPrinsZA/botline/blob/main/coverage-badge.svg?dummy=8484744)](./reports/coverage/index.html)
+
+## Debug 1 (from docs)
+[![Tests Status](./reports/junit/junit-badge.svg?dummy=8484744)](./reports/junit/report.html)
+[![Coverage Status](./reports/coverage/coverage-badge.svg?dummy=8484744)](./reports/coverage/index.html)
+
+## Debug 2 (GitHub pages)
+[![Tests Status](./reports/junit/junit-badge.svg?dummy=8484744)](https://hendrikprinsza.github.io/botline/reports/junit/report.html)
+[![Coverage Status](./reports/coverage/coverage-badge.svg?dummy=8484744)](https://hendrikprinsza.github.io/botline/reports/coverage/index.html)
+
+## Debug 3 (Old)
+[![Tests Status](https://github.com/HendrikPrinsZA/botline/blob/main/tests-badge.svg?dummy=8484744)]
+(https://hendrikprinsza.github.io/botline/reports/junit/report.html) [![Coverage Status](https://github.com/HendrikPrinsZA/botline/blob/main/coverage-badge.svg?dummy=8484744)](https://hendrikprinsza.github.io/botline/reports/coverage/index.html)
 
 Call an AI bot and have a conversation with different personas
 
