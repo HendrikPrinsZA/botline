@@ -8,7 +8,7 @@ coverage:
 	rm -rf reports/coverage/*
 	rm -rf reports/status/*
 
-	pytest --junitxml=reports/status/junit.xml --html=reports/status/report.html
+	pytest --junitxml=reports/status/junit.xml --html=reports/status/index.html
 	genbadge tests --input-file=reports/status/junit.xml -o reports/status/badge.svg
 
 	coverage xml -o reports/coverage/coverage.xml
@@ -21,5 +21,5 @@ install:
 
 uninstall:
 	pip uninstall botline -y
-	
+
 .PHONY: init test

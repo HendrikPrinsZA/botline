@@ -1,5 +1,9 @@
 # BotLine - the hotline for bots
 
+## Debug 0 (from docs)
+[![Tests Status](./reports/status/badge.svg?dummy=1234556)](https://hendrikprinsza.github.io/botline/reports/status/index.html)
+[![Coverage Status](./reports/coverage/badge.svg?dummy=1234556)](https://hendrikprinsza.github.io/botline/reports/coverage/index.html)
+
 ## Debug 1 (from docs)
 [![Tests Status](./reports/junit/junit-badge.svg?dummy=8484744)](./reports/junit/report.html)
 [![Coverage Status](./reports/coverage/coverage-badge.svg?dummy=8484744)](./reports/coverage/index.html)
