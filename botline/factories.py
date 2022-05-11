@@ -1,6 +1,8 @@
 from botline.bots.bot import Bot
 from botline.bots.davinci import Davinci
+from botline.bots.fastgptj import FastGptJ
 from botline.bots.human import Human
+from botline.brains.nlpcloud import NlpCloud
 from botline.brains.openai import OpenAi
 from botline.brains.terminal import Terminal
 
@@ -8,6 +10,7 @@ def BrainFactory(brain: str = 'openai'):
     brain = brain.lower()
     brains = {
         'openai': OpenAi,
+        'nlpcloud': NlpCloud,
         'terminal': Terminal
     }
     
@@ -22,6 +25,7 @@ def BotFactory(bot: str = 'Davinci', brain: str = None) -> Bot:
     bot = bot.lower()
     bots = {
         'davinci': Davinci,
+        'fastgptj': FastGptJ,
         'human': Human
     }
     

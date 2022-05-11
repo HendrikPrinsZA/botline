@@ -1,7 +1,6 @@
 from botline.bots.bot import Bot
 from botline.brains.brain import Brain
 from botline.brains.openai import OpenAi
-from botline.conversation import Message
 
 class Davinci(Bot):
     ALIAS = 'Davinci'

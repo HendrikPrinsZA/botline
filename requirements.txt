@@ -2,3 +2,5 @@ nose
 sphinx
 coverage
 pytest-html
+nlpcloud
+openai

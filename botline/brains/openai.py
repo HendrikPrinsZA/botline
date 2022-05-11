@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import openai
 from botline.brains.brain import Brain
 from botline.cache import Cache
-from botline.definitions import PROJ_DIR, ROOT_DIR
+from botline.definitions import PROJ_DIR
 
 class OpenAi(Brain):
     ALIAS = 'OpenAI'

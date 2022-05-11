@@ -3,12 +3,9 @@ from botline.brains.brain import Brain
 class Bot(object):
     ALIAS = 'UnkownBot'
     
-    BIO = """
-    I am a highly intelligent question answering bot. If you ask me a 
-    question that is rooted in truth, I will give you the answer. If you ask me a 
-    question that is nonsense, trickery, or has no clear answer, I will respond 
-    with something related but funny.
-    """
+    BIO = None
+
+    BIO_MESSAGES = []
     
     def __init__(self, brain: Brain) -> None:
         self.set_properties(brain)
