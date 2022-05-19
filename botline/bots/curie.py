@@ -2,7 +2,7 @@ from botline.bots.bot import Bot
 from botline.brains.brain import Brain
 from botline.brains.openai import OpenAi
 
-class Davinci(Bot):
+class Curie(Bot):
     ALIAS = 'Davinci'
 
     BIO = """

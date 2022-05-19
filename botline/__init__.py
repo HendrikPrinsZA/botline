@@ -7,4 +7,4 @@ from __future__ import print_function
 from botline.core import BotLine
 
 __all__ = ['BotLine']
-__version__ = '0.0.1'
+__version__ = '0.0.2'

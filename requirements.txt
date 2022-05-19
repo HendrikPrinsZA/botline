@@ -4,3 +4,6 @@ coverage
 pytest-html
 nlpcloud
 openai
+typing
+pytest
+genbadge
