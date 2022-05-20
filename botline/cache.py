@@ -1,7 +1,7 @@
 from datetime import datetime
 import hashlib
 import json
-from os import path
+import os
 from typing import Any
 
 class Cache(object):
@@ -11,6 +11,11 @@ class Cache(object):
 
     def __init__(self, filepath: str) -> None:
         self.filepath = filepath
+
+        dirname = os.path.dirname(self.filepath)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
+        
         self.set('viewed_at', datetime.now().timestamp())
 
     def hash(self, key: str) -> str:
@@ -32,7 +37,7 @@ class Cache(object):
     def get(self, key: str) -> Any:
         hash = self.hash(key)
 
-        if not path.isfile(self.filepath):
+        if not os.path.isfile(self.filepath):
             return None
 
         cache = self.file_to_json(self.filepath)
@@ -53,7 +58,7 @@ class Cache(object):
     def set(self, key: str, value: Any) -> Any:
         created = False
 
-        if not path.isfile(self.filepath):
+        if not os.path.isfile(self.filepath):
             created = True
             self.clear()
 
@@ -76,7 +81,7 @@ class Cache(object):
         return value
     
     def clear(self) -> None:
-        with open(self.filepath, 'w+') as file_object:
+        with open(self.filepath, 'w') as file_object:
             json.dump({
                 'created_at': self.encode(datetime.now().timestamp())
             }, file_object)
