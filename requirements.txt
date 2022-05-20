@@ -6,7 +6,6 @@ nlpcloud
 openai
 typing
 pytest
-genbadge
 hypothesis
 python-dotenv
 fire
