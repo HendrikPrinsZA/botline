@@ -2,3 +2,10 @@ nose
 sphinx
 coverage
 pytest-html
+nlpcloud
+openai
+typing
+pytest
+hypothesis
+python-dotenv
+fire

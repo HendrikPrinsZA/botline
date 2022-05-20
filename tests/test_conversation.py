@@ -1,6 +1,5 @@
 import unittest
 
-from botline.bots.bot import Bot
 from botline.conversation import Conversation
 from botline.factories import BotFactory
 

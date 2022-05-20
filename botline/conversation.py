@@ -40,6 +40,9 @@ class Conversation:
         if self.bot.BIO_MESSAGES is None:
             return
 
+        if len(self.bot.BIO_MESSAGES) == 0:
+            return
+
         for message in self.bot.BIO_MESSAGES:
             self.append(self.human.ALIAS, message['question'])
             self.append(self.bot.ALIAS, message['answer'])
@@ -69,7 +72,7 @@ class Conversation:
     def get_text(self) -> str:
         lines = []
         
-        if len(self.bot.BIO) > 0:
+        if self.bot.BIO is not None and len(self.bot.BIO) > 0:
             bio = ""
             for line in self.bot.BIO.splitlines():
                 line = line.strip()
@@ -78,8 +81,9 @@ class Conversation:
             lines.append(bio.strip())
             lines.append('')
         
-        for message in self.messages:
-            lines.append(str(message))
+        if self.messages is not None and len(self.messages) > 0:
+            for message in self.messages:
+                lines.append(str(message))
             
         return "\n".join(lines)
     

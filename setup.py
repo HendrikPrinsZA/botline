@@ -13,7 +13,7 @@ def parse_requirements(filename):
 
 setup(
     name = 'botline',
-    version = '0.0.1',
+    version = '0.0.2',
     description = 'Call a bot and have a conversation',
     long_description = long_description,
     long_description_content_type = "text/markdown",

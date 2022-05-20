@@ -1,19 +1,18 @@
 init:
-	pip install -r requirements.txt
+	python3 -m pip install -r requirements.txt
 
 test:
 	pytest
 
 coverage:
-	rm -rf reports/coverage/*
-	rm -rf reports/status/*
+	rm -rf tests/report/*
+	nosetests --config=config.cfg
 
-	pytest --junitxml=reports/status/junit.xml --html=reports/status/index.html
-	genbadge tests --input-file=reports/status/junit.xml -o reports/status/badge.svg
+	genbadge tests -i tests/report/xunit.xml -o tests/report/badge-tests.svg
+	genbadge coverage -i tests/report/coverage.xml -o tests/report/badge-coverage.svg
 
-	coverage xml -o reports/coverage/coverage.xml
-	coverage html -d reports/coverage
-	genbadge coverage --input-file=reports/coverage/coverage.xml --output-file=reports/coverage/badge.svg
+build:
+	python3 setup.py sdist bdist_wheel
 
 install:
 	python3 setup.py sdist bdist_wheel

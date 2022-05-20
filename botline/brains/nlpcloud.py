@@ -1,32 +1,35 @@
 import json
 import os
 from dotenv import load_dotenv
-import openai
+import nlpcloud
 from botline.brains.brain import Brain
 from botline.cache import Cache
 from botline.definitions import PROJ_DIR
 
-class OpenAi(Brain):
-    ALIAS = 'OpenAI'
+class NlpCloud(Brain):
+    ALIAS = 'NlpCloud'
     NO_ANSWER = 'has no response'
 
     def __init__(self) -> None:
         super().__init__()
 
         self.path_env = f"{PROJ_DIR}/.env"
-        self.path_cache = f"{PROJ_DIR}/.cache/openai.json"
+        self.path_cache = f"{PROJ_DIR}/.cache/nlpcloud.json"
         
         self.cache = Cache(self.path_cache)
         load_dotenv(self.path_env)
-        openai_key = os.getenv("OPEN_AI_API_KEY")
+
+        key = os.getenv("NLP_CLOUD_API_KEY")
         
-        if openai_key is None:
-            print("Error: Expected env variable 'OPEN_AI_API_KEY' not found")
+        if key is None:
+            print("Error: Expected env variable 'NLP_CLOUD_API_KEY' not found")
             exit(1)
 
-        openai.api_key = openai_key
+        self.client = nlpcloud.Client("fast-gpt-j", key, True)
 
     def answer(self, text: str) -> str:
+        print("Unsupported: NlpCloud still in development")
+        exit(1)
         return self.get_answer(text)
 
     def get_answer(self, prompt) -> str:
@@ -47,14 +50,9 @@ class OpenAi(Brain):
         if response is not None:
             return response
 
-        response = openai.Completion.create(
-            engine = "text-davinci-002",
-            prompt = prompt,
-            temperature = 0.7,
-            max_tokens = 100,
-            top_p = 1,
-            frequency_penalty = 0.2,
-            presence_penalty = 0,
+        response = self.client.question(
+            "Example context",
+            "When was the Guardian created?"
         )
         
         return self.cache.set(prompt, response)
