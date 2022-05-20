@@ -37,7 +37,7 @@ jobs:
         path: tests/report
     - name: Run package creation
       run: |
-        make build
+        python setup.py sdist bdist_wheel
     - name: Archive package
       uses: actions/upload-artifact@v2
       with:
