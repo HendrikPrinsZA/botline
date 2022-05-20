@@ -24,15 +24,12 @@ jobs:
         cache: 'pip'
     - name: Install dependencies
       run: pip install -r requirements.txt
-    - name: Run tests
+    - name: Run tests and coverage
       run: |
         nosetests --config=config.cfg
 
         genbadge tests -i tests/report/xunit.xml -o tests/report/badge-tests.svg
         genbadge coverage -i tests/report/coverage.xml -o tests/report/badge-coverage.svg
-    - name: Run tests and coverage
-      run: |
-        make coverage
     - name: Archive code coverage html report
       uses: actions/upload-artifact@v2
       with:
