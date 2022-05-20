@@ -76,7 +76,7 @@ class Cache(object):
         return value
     
     def clear(self) -> None:
-        with open(self.filepath, 'w') as file_object:
+        with open(self.filepath, 'w+') as file_object:
             json.dump({
                 'created_at': self.encode(datetime.now().timestamp())
             }, file_object)

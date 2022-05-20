@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         make init
-    - name: Run tests and coeverage
+    - name: Run tests and coverage
       run: |
         make coverage
     - name: Archive code coverage html report
