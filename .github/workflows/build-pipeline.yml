@@ -30,7 +30,6 @@ jobs:
     - name: Run tests and coverage
       run: |
         nosetests --config=config.cfg
-
         genbadge tests -i tests/report/xunit.xml -o tests/report/badge-tests.svg
         genbadge coverage -i tests/report/coverage.xml -o tests/report/badge-coverage.svg
     - name: Archive code coverage html report
