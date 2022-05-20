@@ -1,0 +1,41 @@
+# GitHub CI build pipeline
+name: BotLine build pipeline
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        make init
+    - name: Run tests and coeverage
+      run: |
+        make coverage
+    - name: Archive code coverage html report
+      uses: actions/upload-artifact@v2
+      with:
+        name: tests-report
+        path: tests/report
+    - name: Run package creation
+      run: |
+        make build
+    - name: Archive package
+      uses: actions/upload-artifact@v2
+      with:
+        name: botline
+        path: dist  
+

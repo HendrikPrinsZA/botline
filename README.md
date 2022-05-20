@@ -43,3 +43,11 @@ Human: What else?
 Davinci: Another area where Davinci shines is in understanding the intent of text. Davinci is quite good at solving many kinds of logic problems and explaining the motives of characters. Davinci has been able to solve some of the most challenging AI problems involving cause and effect.
 ```
 
+## Other notes / Virtual environment using Virtualenv Burrito
+When you cd into a directory containing a .env, direnv automagically activates the environment. See [github repo](https://github.com/brainsik/virtualenv-burrito).
+
+Install it on Mac OS X using brew:
+```
+$ brew install direnv
+```
+On Linux follow the instructions at [direnv.net](https://direnv.net/)
