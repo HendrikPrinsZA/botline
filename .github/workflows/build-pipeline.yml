@@ -14,17 +14,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up python 3.9
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Python
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
+        architecture: x64
+        cache: 'pip'
     - name: Install dependencies
-      run: |
-        make init
+      run: pip install -r requirements.txt
     - name: Run tests
       run: |
-        make test
+        cd 
+        rm -rf tests/report/*
+        nosetests --config=config.cfg
+
+        genbadge tests -i tests/report/xunit.xml -o tests/report/badge-tests.svg
+        genbadge coverage -i tests/report/coverage.xml -o tests/report/badge-coverage.svg
     - name: Run tests and coverage
       run: |
         make coverage
