@@ -29,6 +29,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run tests and coverage
       run: |
+        pip list
         nosetests --config=config.cfg
         genbadge tests -i tests/report/xunit.xml -o tests/report/badge-tests.svg
         genbadge coverage -i tests/report/coverage.xml -o tests/report/badge-coverage.svg
